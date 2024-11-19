@@ -3,6 +3,8 @@ package entities;
 import enums.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.Duration;
+import exceptions.DateException;
 
 public class Task {
     public static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -11,17 +13,19 @@ public class Task {
     private String name;
     private Level difficultyLevel;
     private LocalDate deadlineDay;
-    private Customer responsibleCustomer;
     private Status progressingStatus;
 
     private static Integer idNumber = 1;
 
-    public Task(String name, Level difficultyLevel, LocalDate deadlineDay, Customer responsibleCustomer){
+    public Task(String name, Level difficultyLevel, LocalDate deadlineDay){
+        if(Duration.between(LocalDate.now().atStartOfDay(), deadlineDay.atStartOfDay()).toDays() < 0){
+            throw new DateException("Data inválida para nova tarefa");
+        }
+
         this.id = idNumber;
         this.name = name;
         this.difficultyLevel = difficultyLevel;
         this.deadlineDay = deadlineDay;
-        this.responsibleCustomer = responsibleCustomer;
         this.progressingStatus = Status.PENDING;
 
         idNumber += 1;
@@ -51,14 +55,6 @@ public class Task {
         this.deadlineDay = deadlineDay;
     }
 
-    public Customer getResponsibleCustomer() {
-        return responsibleCustomer;
-    }
-
-    public void setResponsibleCustomer(Customer responsibleCustomer) {
-        this.responsibleCustomer = responsibleCustomer;
-    }
-
     public Status getProgressingStatus() {
         return progressingStatus;
     }
@@ -82,7 +78,6 @@ public class Task {
                 ", nome=" + name +
                 ", dificuldade=" + difficultyLevel +
                 ", prazo final=" + deadlineDay +
-                ", responsável=" + responsibleCustomer +
                 ", status=" + progressingStatus +
                 '}';
     }

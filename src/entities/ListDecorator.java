@@ -10,22 +10,19 @@ public abstract class ListDecorator implements IList {
     }
 
     public void addTask(Task task){
-        list.getTasks().add(task);
+        list.addTask(task);
     }
 
     public void removeTask(Task task){
-        list.getTasks().remove(task);
+        list.removeTask(task);
     }
 
-    public void updateTask(Task currentTask, Task newTask){ // Conferir o funcionamento
-        Task task = list.getTasks().stream().filter(t -> t.getId() == currentTask.getId()).findFirst().orElse(null);
-        if(task != null){
-            task = newTask;
-        }
+    public void updateTask(Task currentTask, Task newTask){
+        list.updateTask(currentTask, newTask);
     }
 
     public Task getTask(int id){
-        return list.getTasks().stream().filter(t -> t.getId() == id).findFirst().orElse(null);
+        return list.getTask(id);
     }
 
     public List<Task> getTasks(){
@@ -33,13 +30,11 @@ public abstract class ListDecorator implements IList {
     }
 
     public void showList(){
-        for(Task t : list.getTasks()){
-            System.out.println(t);
-        }
+        list.showList();
     }
 
     public int size(){
-        return list.getTasks().size();
+        return list.size();
     }
 
     public IList getList(){

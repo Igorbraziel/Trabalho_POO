@@ -17,14 +17,18 @@ public class Program {
 
         IList myList = ToDoList.getInstance();
 
-        Task t1 = new Task("Tarefa 1", Level.EASY, LocalDate.of(2024, 12, 27), );
-        Task t2 = new Task("Tarefa 2", Level.MEDIUM, LocalDate.of(2023, 2, 27));
-        Task t3 = new Task("Tarefa 3", Level.HARD, LocalDate.of(2022, 4, 27));
+        Task t1 = new Task("Lavar o Banheiro", Level.EASY, LocalDate.now().plusDays(20));
+        Task t2 = new Task("Ir na Academia", Level.MEDIUM, LocalDate.now().plusDays(21));
+        Task t3 = new Task("Abastecer o carro", Level.HARD, LocalDate.now().plusDays(22));
 
-        myList.addTask(t1);
-        myList.addTask(t2);
-        myList.addTask(t3);
+        IList orderedByName = new OrderedListByName(myList);
+        IList orderedById = new OrderedListById(orderedByName);
 
+        orderedByName.addTask(t1);
+        orderedByName.addTask(t2);
+        orderedByName.addTask(t3);
+
+        orderedById.showList();
         myList.showList();
 
         sc.close();

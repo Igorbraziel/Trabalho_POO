@@ -9,7 +9,7 @@ public class OrderedListById extends ListDecorator {
     }
 
     @Override
-    public List<Task> getTasks(){ //Devo testar
+    public List<Task> getTasks(){
         return getList().getTasks().stream().sorted((task, other) -> task.getId().compareTo(other.getId())).collect(Collectors.toList());
     }
 

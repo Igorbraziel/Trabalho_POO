@@ -19,12 +19,36 @@ public class ToDoList implements IList {
         return instance;
     }
 
-    boolean addTask(Task task);
-    boolean removeTask(Task task);
-    boolean updateTask(Task currentTask, Task newTask);
-    Task getTask(int index);
-    List<Task> getTasks();
-    void showList();
-    int size();
-    boolean joinLists(IList list);
+    public void addTask(Task task){
+        tasks.add(task);
+    }
+
+    public void removeTask(Task task){
+        tasks.remove(task);
+    }
+
+    public void updateTask(Task currentTask, Task newTask){ // Conferir o funcionamento
+        Task task = tasks.stream().filter(t -> t.getId() == currentTask.getId()).findFirst().orElse(null);
+        if(task != null){
+            task = newTask;
+        }
+    }
+
+    public Task getTask(int id){
+        return tasks.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
+    }
+
+    public List<Task> getTasks(){
+        return tasks;
+    }
+
+    public void showList(){
+        for(Task t : tasks){
+            System.out.println(t);
+        }
+    }
+
+    public int size(){
+        return tasks.size();
+    }
 }

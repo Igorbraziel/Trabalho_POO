@@ -9,12 +9,11 @@ public abstract class ListDecorator implements IList {
         this.list = list;
     }
 
-    public abstract boolean addTask(Task task);
-    public abstract boolean removeTask(Task task);
-    public abstract boolean updateTask(Task currentTask, Task newTask);
+    public abstract void addTask(Task task);
+    public abstract void removeTask(Task task);
+    public abstract void updateTask(Task currentTask, Task newTask);
     public abstract Task getTask(int index);
     public abstract List<Task> getTasks();
     public abstract void showList();
     public abstract int size();
-    public abstract boolean joinLists(IList list);
 }

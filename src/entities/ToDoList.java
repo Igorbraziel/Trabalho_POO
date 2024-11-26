@@ -42,15 +42,15 @@ public class ToDoList implements IList, ListObservable {
 
     @Override
     public void updateTask(Task currentTask, Task newTask){ // Conferir o funcionamento
-        Task task = tasks.stream().filter(t -> t.getId() == currentTask.getId()).findFirst().orElse(null);
-        if(task != null){
-            task = newTask;
+        if(currentTask != null && newTask != null){
+            removeTask(currentTask);
+            addTask(newTask);
         }
     }
 
     @Override
     public Task getTask(int id){
-        return tasks.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
+        return tasks.stream().filter(t -> t.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override

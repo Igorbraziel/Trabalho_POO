@@ -6,8 +6,10 @@ import exceptions.TaskException;
 import observer.ListObservable;
 
 import java.time.LocalDate;
+
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ToDoList implements IList, ListObservable {
     private static ToDoList instance;
@@ -78,30 +80,35 @@ public class ToDoList implements IList, ListObservable {
 
     @Override
     public void notifyTasks(Object obj){
-        for(Task t : tasks){
+
+        for(Task t : new ArrayList<Task>(tasks)){
             t.update(obj);
         }
     }
     //--------------------------------
 
+    @Override
     public void finishTask(Task task){
-        System.out.println("A tarefa foi concluida com sucesso, parabéns!");
-        System.out.println("Tarefa Concluida: " + task);
+        System.out.println("A tarefa foi concluida e removida da lista de afazeres com sucesso, parabéns!");
         this.removeTask(task);
     }
 
+    @Override
     public void cleanList(){
         notifyTasks(getInstance());
     }
 
+    @Override
     public void doTask(Task task, Integer percentageDone){
         notifyTask(task, percentageDone);
     }
 
+    @Override
     public void changeDeadlineDay(Task task, LocalDate deadlineDay){
         notifyTask(task, deadlineDay);
     }
 
+    @Override
     public void changeDifficultyLevel(Task task, Level difficultyLevel){
         notifyTask(task, difficultyLevel);
     }

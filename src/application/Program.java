@@ -39,6 +39,12 @@ public class Program {
             myList.addTask(t2);
             myList.addTask(t3);
 
+            myList.doTask(t1, 50);
+            myList.doTask(t2, 100);
+            myList.cleanList();
+            myList.doTask(t3, 300);
+            myList.cleanList();
+
             orderedByDeadline.showList();
         } catch(DateException e){
             System.out.println("Mensagem de erro:" + e.getMessage());

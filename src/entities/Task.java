@@ -129,6 +129,7 @@ public class Task implements ListObserver {
                 ", dificuldade=" + difficultyLevel +
                 ", prazo final=" + this.showFormattedDate() +
                 ", status=" + progressingStatus +
+                ", porcentagem feita=" + percentageDone + "%" +
                 '}';
     }
 }

@@ -15,7 +15,7 @@ import java.io.IOException;
 
 import entities.*;
 
-import enums.Level;
+import enums.*;
 
 import exceptions.*;
 
@@ -33,6 +33,9 @@ public class Program {
             Task t2 = new Task("Ir na Academia", Level.MEDIUM, LocalDate.now().plusDays(25));
             Task t3 = new Task("Abastecer o carro", Level.HARD, LocalDate.now().plusDays(51));
 
+            IList orderedListByDeadlineDay = new OrderedListByDeadlineDay(myList);
+            IList orderedListById = new OrderedListById(myList);
+            IList orderedListByName = new OrderedListByName(myList);
             IList orderedListByPercentageDone = new OrderedListByPercentageDone(myList);
 
             myList.addTask(t1);
@@ -40,12 +43,18 @@ public class Program {
             myList.addTask(t3);
 
             myList.doTask(t1, 50);
-            myList.doTask(t2, 100);
-            myList.cleanList();
-            myList.doTask(t3, 300);
-            myList.cleanList();
+            myList.doTask(t2, 70);
+            myList.doTask(t3, 10);
 
+            orderedListByDeadlineDay.showList();
+            System.out.println("-----------------------------------------------------------------------------");
+            orderedListById.showList();
+            System.out.println("-----------------------------------------------------------------------------");
+            orderedListByName.showList();
+            System.out.println("-----------------------------------------------------------------------------");
             orderedListByPercentageDone.showList();
+            System.out.println("-----------------------------------------------------------------------------");
+
         } catch(DateException e){
             System.out.println("Mensagem de erro:" + e.getMessage());
         } catch(IdException e){

@@ -1,19 +1,16 @@
 package tests;
 
 import entities.Task;
-import entities.ToDoList;
+
 import enums.Level;
 import enums.Status;
-import exceptions.DateException;
-import exceptions.TaskException;
-import org.junit.Test;
 
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
+import org.junit.Test;
 import static org.junit.Assert.*;
 
+// WORKING
 public class TaskTest {
 
     @Test

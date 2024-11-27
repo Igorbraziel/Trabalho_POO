@@ -12,6 +12,8 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+
+// WORKING
 public class ToDoListTest {
     // GoF Decorator methods:
     @Test
@@ -39,7 +41,7 @@ public class ToDoListTest {
         Task newTask = new Task("Tarefa Teste 2", Level.MEDIUM, LocalDate.now());
         list.addTask(currentTask);
         list.updateTask(currentTask, newTask);
-        assertEquals(newTask, list.getTask(newTask.getId()));
+        assertEquals(newTask, list.getTask(currentTask.getId()));
     }
 
     @Test

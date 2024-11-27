@@ -20,7 +20,7 @@ public class Task implements ListObserver {
 
     private static Integer idNumber = 1;
 
-    public Task(String name, Level difficultyLevel, LocalDate deadlineDay){
+    public Task(String name, Level difficultyLevel, LocalDate deadlineDay) {
         if(Duration.between(LocalDate.now().atStartOfDay(), deadlineDay.atStartOfDay()).toDays() < 0){
             throw new DateException("Data inválida para nova tarefa");
         }
@@ -56,7 +56,7 @@ public class Task implements ListObserver {
         return deadlineDay;
     }
 
-    public void setDeadlineDay(LocalDate deadlineDay){
+    public void setDeadlineDay(LocalDate deadlineDay) {
         if(Duration.between(LocalDate.now().atStartOfDay(), deadlineDay.atStartOfDay()).toDays() < 0){
             throw new DateException("Nova Data inválida para tarefa");
         }
@@ -75,7 +75,7 @@ public class Task implements ListObserver {
         return percentageDone;
     }
 
-    public void setPercentageDone(Integer percentageDone){
+    public void setPercentageDone(Integer percentageDone) {
         if(percentageDone < 0) throw new TaskException("Atualização de tarefa inválida, a porcentagem feita deve ser positiva");
         if(percentageDone == 0){
             setProgressingStatus(Status.PENDING);
@@ -104,7 +104,7 @@ public class Task implements ListObserver {
     }
 
     @Override
-    public void update(Object obj){
+    public void update(Object obj) {
         if(obj == ToDoList.getInstance()){
             if(this.getProgressingStatus() == Status.FINISHED) {
                 ((ToDoList) obj).finishTask(this);

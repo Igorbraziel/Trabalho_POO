@@ -33,7 +33,7 @@ public class Program {
             Task t2 = new Task("Ir na Academia", Level.MEDIUM, LocalDate.now().plusDays(25));
             Task t3 = new Task("Abastecer o carro", Level.HARD, LocalDate.now().plusDays(51));
 
-            IList orderedByDeadline = new OrderedListByDeadlineDay(myList);
+            IList orderedListByPercentageDone = new OrderedListByPercentageDone(myList);
 
             myList.addTask(t1);
             myList.addTask(t2);
@@ -45,7 +45,7 @@ public class Program {
             myList.doTask(t3, 300);
             myList.cleanList();
 
-            orderedByDeadline.showList();
+            orderedListByPercentageDone.showList();
         } catch(DateException e){
             System.out.println("Mensagem de erro:" + e.getMessage());
         } catch(IdException e){

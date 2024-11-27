@@ -43,6 +43,7 @@ public class ToDoList implements IList, ListObservable {
     @Override
     public void updateTask(Task currentTask, Task newTask){ // Conferir o funcionamento
         if(currentTask != null && newTask != null){
+            newTask.setId(currentTask.getId());
             removeTask(currentTask);
             addTask(newTask);
         }

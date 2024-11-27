@@ -9,7 +9,7 @@ public class OrderedListByPercentageDone extends ListDecorator {
     }
 
     @Override
-    public List<Task> getTasks(){ // TESTAR
+    public List<Task> getTasks(){
         return getList()
                 .getTasks()
                 .stream()

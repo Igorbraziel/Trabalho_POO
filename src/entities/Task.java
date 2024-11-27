@@ -1,11 +1,14 @@
 package entities;
 
 import enums.*;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.Duration;
+
 import exceptions.DateException;
 import exceptions.TaskException;
+
 import observer.ListObserver;
 
 public class Task implements ListObserver {

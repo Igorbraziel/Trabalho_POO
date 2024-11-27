@@ -1,15 +1,13 @@
 package entities;
 
 import enums.Level;
-import exceptions.IdException;
-import exceptions.TaskException;
+
 import observer.ListObservable;
 
 import java.time.LocalDate;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ToDoList implements IList, ListObservable {
     private static ToDoList instance;
@@ -81,7 +79,6 @@ public class ToDoList implements IList, ListObservable {
 
     @Override
     public void notifyTasks(Object obj){
-
         for(Task t : new ArrayList<Task>(tasks)){
             t.update(obj);
         }

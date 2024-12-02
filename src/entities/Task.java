@@ -128,6 +128,14 @@ public class Task implements ListObserver {
         }
     }
 
+    public static Integer getIdNumber() {
+        return idNumber;
+    }
+
+    public static void setIdNumber(Integer id){
+        idNumber = id;
+    }
+
     @Override
     public String toString() {
         return "Tarefa - {" +

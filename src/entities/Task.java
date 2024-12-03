@@ -28,10 +28,6 @@ public class Task implements ListObserver {
             throw new DateException("Data inválida para nova tarefa");
         }
 
-        if(name.contains(",")){
-            throw new TaskException("Nome inválido para uma tarefa");
-        }
-
         this.id = idNumber;
         this.name = name;
         this.difficultyLevel = difficultyLevel;

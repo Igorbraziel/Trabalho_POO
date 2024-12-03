@@ -2,13 +2,8 @@ package application.swingInterface;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.time.LocalDate;
 
 import entities.*;
-import enums.*;
-import exceptions.*;
 
 public class ToDoListGUI {
     private ListFrame listFrame;
@@ -35,7 +30,6 @@ public class ToDoListGUI {
         // Botões de funcionalidades
         JButton addButton = new JButton("Adicionar Tarefa");
         JButton removeButton = new JButton("Remover Tarefa");
-        JButton finishButton = new JButton("Concluir Tarefa");
         JButton doButton = new JButton("Fazer Tarefa");
         JButton changeDeadlineDayButton = new JButton("Mudar Prazo Final");
         JButton changeDifficultyButton = new JButton("Mudar Dificuldade");
@@ -45,7 +39,6 @@ public class ToDoListGUI {
         // Adicionando os botões ao painel inferior
         bottomPanel.add(addButton);
         bottomPanel.add(removeButton);
-        bottomPanel.add(finishButton);
         bottomPanel.add(doButton);
         bottomPanel.add(changeDeadlineDayButton);
         bottomPanel.add(changeDifficultyButton);
@@ -57,28 +50,16 @@ public class ToDoListGUI {
         listFrame.add(bottomPanel, BorderLayout.SOUTH);
 
         // Ação para adicionar tarefas
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Task tarefa = new Task("Tarefa", Level.EASY, LocalDate.now());
-
-                toDoList.addTask(tarefa);
-                showList(); // Atualizar a exibição
-
-            }
-        });
+        addButton.addActionListener(new AddButtonListener(toDoList, this));
 
         // Ação para remover tarefas
-        removeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int selectedIndex = list.getSelectedIndex();
-                if (selectedIndex != -1) {
-                    toDoList.removeTask(toDoList.getTask(selectedIndex + 1));
-                    showList(); // Atualizar a exibição
-                }
-            }
-        });
+        removeButton.addActionListener(new RemoveButtonListener(toDoList, this));
+
+        // Ação para fazer tarefas
+        doButton.addActionListener(new DoButtonListener(toDoList, this));
+
+        //Ação para mudar o prazo final das tarefas
+        changeDeadlineDayButton.addActionListener(new ChangeDeadlineDayButtonListener(toDoList, this));
     }
 
     public static void showError(Exception exception){

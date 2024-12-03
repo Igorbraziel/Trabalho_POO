@@ -87,7 +87,6 @@ public class ToDoList implements IList, ListObservable {
 
     @Override
     public void finishTask(Task task){
-        System.out.println("A tarefa foi concluida e removida da lista de afazeres com sucesso, parabéns!");
         this.removeTask(task);
     }
 

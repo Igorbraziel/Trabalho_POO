@@ -20,9 +20,8 @@ public class Main {
         File outputFile = new File("Trabalho_POO/listContent.csv");
         try(BufferedReader br = new BufferedReader(new FileReader(outputFile))){
             try(BufferedWriter bw = new BufferedWriter(new FileWriter(outputFile, true))) {
-                String line = br.readLine();
                 ToDoList toDoList = ToDoList.getInstance(); // inicializando a minha lista de acordo com os dados já salvos
-
+                String line;
                 while(true){
                     line = br.readLine();
                     if(line == null) break;
@@ -43,11 +42,15 @@ public class Main {
                 }
             } catch(IOException writeException){
                 System.out.println("Erro de escrita no arquivo: " + writeException.getMessage());
-                return;
+            } catch(DateException dateException){
+                System.out.println("Erro na Data: " + dateException.getMessage());
+            } catch(IdException idException){
+                System.out.println("Erro no Id: " + idException.getMessage());
+            } catch(TaskException taskException){
+                System.out.println("Erro na tarefa: " + taskException.getMessage());
             }
         } catch (IOException readException){
             System.out.println("Erro de leitura no arquivo: " + readException.getMessage());
-            return;
         }
     }
 }

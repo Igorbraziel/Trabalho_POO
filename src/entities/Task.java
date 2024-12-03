@@ -28,6 +28,10 @@ public class Task implements ListObserver {
             throw new DateException("Data inválida para nova tarefa");
         }
 
+        if(name.contains(",")){
+            throw new TaskException("Nome inválido para uma tarefa");
+        }
+
         this.id = idNumber;
         this.name = name;
         this.difficultyLevel = difficultyLevel;
@@ -114,7 +118,6 @@ public class Task implements ListObserver {
             }
             if(Duration.between(LocalDate.now().atStartOfDay(), deadlineDay.atStartOfDay()).toDays() < 0){
                 ((ToDoList) obj).removeTask(this);
-                throw new TaskException("Prazo final da tarefa foi ultrapassado, tarefa removida da lista:" + this);
             }
         } else if(obj instanceof Integer) {
             Integer percentageDone = (Integer) obj;

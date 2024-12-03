@@ -6,49 +6,54 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
-import entities.Task;
-import entities.ToDoList;
+import entities.*;
 import enums.Level;
 
-public class ListaDeTarefasGUI {
-    private JFrame frame;
+public class ToDoListGUI {
+    private ListFrame listFrame;
     private DefaultListModel<String> model;
     private JList<String> list;
     private JTextField taskField;
-    private ToDoList toDoList;
+    private IList toDoList;
 
-    public ListaDeTarefasGUI() {
+    public ToDoListGUI() {
         // Inicializar a lista de tarefas personalizada
         toDoList = ToDoList.getInstance();
 
         // Criar a janela principal
-        frame = new JFrame("Lista de Tarefas");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
-        frame.setLayout(new BorderLayout());
+        listFrame = new ListFrame("Lista de Tarefas");
 
         // Modelo da lista
         model = new DefaultListModel<>();
         list = new JList<>(model);
         JScrollPane scrollPane = new JScrollPane(list);
 
-        // Painel superior para adicionar tarefas
-        JPanel topPanel = new JPanel();
-        topPanel.setLayout(new BorderLayout());
-        taskField = new JTextField();
-        JButton addButton = new JButton("Adicionar");
-        topPanel.add(taskField, BorderLayout.CENTER);
-        topPanel.add(addButton, BorderLayout.EAST);
+        // Painel inferior para funcionalidades tarefas
+        JPanel bottomPanel = new JPanel(new GridLayout(2, 4, 8, 8));
 
-        // Painel inferior para remover tarefas
-        JPanel bottomPanel = new JPanel();
-        JButton removeButton = new JButton("Remover Selecionado");
+        // Botões de funcionalidades
+        JButton addButton = new JButton("Adicionar Tarefa");
+        JButton removeButton = new JButton("Remover Tarefa");
+        JButton finishButton = new JButton("Concluir Tarefa");
+        JButton doButton = new JButton("Fazer Tarefa");
+        JButton changeDeadlineDayButton = new JButton("Mudar Prazo Final");
+        JButton changeDifficultyButton = new JButton("Mudar Dificuldade");
+        JButton cleanListButton = new JButton("Limpar Tarefas Concluidas");
+        JButton decoratorButton = new JButton("Decorar Lista");
+
+        // Adicionando os botões ao painel inferior
+        bottomPanel.add(addButton);
         bottomPanel.add(removeButton);
+        bottomPanel.add(finishButton);
+        bottomPanel.add(doButton);
+        bottomPanel.add(changeDeadlineDayButton);
+        bottomPanel.add(changeDifficultyButton);
+        bottomPanel.add(cleanListButton);
+        bottomPanel.add(decoratorButton);
 
         // Adicionar componentes à janela
-        frame.add(topPanel, BorderLayout.NORTH);
-        frame.add(scrollPane, BorderLayout.CENTER);
-        frame.add(bottomPanel, BorderLayout.SOUTH);
+        listFrame.add(scrollPane, BorderLayout.CENTER);
+        listFrame.add(bottomPanel, BorderLayout.SOUTH);
 
         // Ação para adicionar tarefas
         addButton.addActionListener(new ActionListener() {
@@ -57,7 +62,7 @@ public class ListaDeTarefasGUI {
                 Task tarefa = new Task("Tarefa", Level.EASY, LocalDate.now());
 
                 toDoList.addTask(tarefa);
-                atualizarLista(); // Atualizar a exibição
+                showList(); // Atualizar a exibição
                 taskField.setText("");
             }
         });
@@ -69,17 +74,14 @@ public class ListaDeTarefasGUI {
                 int selectedIndex = list.getSelectedIndex();
                 if (selectedIndex != -1) {
                     toDoList.removeTask(toDoList.getTask(selectedIndex));
-                    atualizarLista(); // Atualizar a exibição
+                    showList(); // Atualizar a exibição
                 }
             }
         });
-
-        // Exibir a janela
-        frame.setVisible(true);
     }
 
     // Atualizar o modelo da lista com os dados do ToDoList
-    private void atualizarLista() {
+    private void showList() {
         model.clear();
         for (Task tarefa : toDoList.getTasks()) {
             model.addElement(tarefa.toString());
@@ -87,7 +89,7 @@ public class ListaDeTarefasGUI {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new ListaDeTarefasGUI());
+        SwingUtilities.invokeLater(() -> new ToDoListGUI());
     }
 }
 

@@ -7,7 +7,8 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 import entities.*;
-import enums.Level;
+import enums.*;
+import exceptions.*;
 
 public class ToDoListGUI {
     private ListFrame listFrame;
@@ -63,7 +64,7 @@ public class ToDoListGUI {
 
                 toDoList.addTask(tarefa);
                 showList(); // Atualizar a exibição
-                taskField.setText("");
+
             }
         });
 
@@ -73,15 +74,25 @@ public class ToDoListGUI {
             public void actionPerformed(ActionEvent e) {
                 int selectedIndex = list.getSelectedIndex();
                 if (selectedIndex != -1) {
-                    toDoList.removeTask(toDoList.getTask(selectedIndex));
+                    toDoList.removeTask(toDoList.getTask(selectedIndex + 1));
                     showList(); // Atualizar a exibição
                 }
             }
         });
     }
 
+    public static void showError(Exception exception){
+        String exceptionMessage = "Erro:" + exception.getMessage();
+        JOptionPane.showMessageDialog(
+                null,
+                exceptionMessage,
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
+
     // Atualizar o modelo da lista com os dados do ToDoList
-    private void showList() {
+    public void showList() {
         model.clear();
         for (Task tarefa : toDoList.getTasks()) {
             model.addElement(tarefa.toString());

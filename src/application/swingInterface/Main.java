@@ -14,15 +14,17 @@ import entities.*;
 import enums.*;
 import exceptions.*;
 
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args){
         Locale.setDefault(Locale.US);
-        File outputFile = new File("Trabalho_POO/listContent.csv");
+        File outputFile = new File("listContent.csv");
         try(BufferedReader br = new BufferedReader(new FileReader(outputFile))){
             try(BufferedWriter bw = new BufferedWriter(new FileWriter(outputFile, true))) {
                 ToDoList toDoList = ToDoList.getInstance(); // inicializando a minha lista de acordo com os dados já salvos
                 String line;
-                while(true){
+                while(true){ // USAR THREADS AQUI
                     line = br.readLine();
                     if(line == null) break;
 
@@ -40,17 +42,19 @@ public class Main {
 
                     toDoList.addTask(task);
                 }
+
+                SwingUtilities.invokeLater(() -> new ToDoListGUI()); // iniciando a interface
             } catch(IOException writeException){
-                System.out.println("Erro de escrita no arquivo: " + writeException.getMessage());
+                ToDoListGUI.showError(writeException);
             } catch(DateException dateException){
-                System.out.println("Erro na Data: " + dateException.getMessage());
+                ToDoListGUI.showError(dateException);
             } catch(IdException idException){
-                System.out.println("Erro no Id: " + idException.getMessage());
+                ToDoListGUI.showError(idException);
             } catch(TaskException taskException){
-                System.out.println("Erro na tarefa: " + taskException.getMessage());
+                ToDoListGUI.showError(taskException);
             }
         } catch (IOException readException){
-            System.out.println("Erro de leitura no arquivo: " + readException.getMessage());
+            ToDoListGUI.showError(readException);
         }
     }
 }

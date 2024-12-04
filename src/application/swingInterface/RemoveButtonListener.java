@@ -43,6 +43,7 @@ public class RemoveButtonListener implements ActionListener {
         if(removedTask == null){
             throw new TaskException("O Id informado não corresponde a nenhuma tarefa");
         }
+
         toDoList.removeTask(removedTask);
 
         JOptionPane.showMessageDialog(

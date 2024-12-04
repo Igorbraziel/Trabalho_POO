@@ -25,25 +25,27 @@ public class ToDoListGUI {
         JScrollPane scrollPane = new JScrollPane(list);
 
         // Painel inferior para funcionalidades tarefas
-        JPanel bottomPanel = new JPanel(new GridLayout(2, 4, 8, 8));
+        JPanel bottomPanel = new JPanel(new GridLayout(4, 2, 15, 15));
 
         // Botões de funcionalidades
-        JButton addButton = new JButton("Adicionar Tarefa");
-        JButton removeButton = new JButton("Remover Tarefa");
-        JButton doButton = new JButton("Fazer Tarefa");
-        JButton changeDeadlineDayButton = new JButton("Mudar Prazo Final");
-        JButton changeDifficultyButton = new JButton("Mudar Dificuldade");
-        JButton cleanListButton = new JButton("Limpar Tarefas Concluidas");
-        JButton decoratorButton = new JButton("Decorar Lista");
+        ListButton addButton = new ListButton("Adicionar Tarefa");
+        ListButton removeButton = new ListButton("Remover Tarefa");
+        ListButton updateButton = new ListButton("Atualizar Tarefa");
+        ListButton doButton = new ListButton("Fazer Tarefa");
+        ListButton changeDeadlineDayButton = new ListButton("Mudar Prazo Final de Uma Tarefa");
+        ListButton changeDifficultyButton = new ListButton("Mudar Dificuldade de Uma Tarefa");
+        ListButton cleanListButton = new ListButton("Limpar Tarefas Concluidas");
+        ListButton sortButton = new ListButton("Ordenar Lista de Tarefas");
 
         // Adicionando os botões ao painel inferior
         bottomPanel.add(addButton);
         bottomPanel.add(removeButton);
+        bottomPanel.add(updateButton);
         bottomPanel.add(doButton);
         bottomPanel.add(changeDeadlineDayButton);
         bottomPanel.add(changeDifficultyButton);
         bottomPanel.add(cleanListButton);
-        bottomPanel.add(decoratorButton);
+        bottomPanel.add(sortButton);
 
         // Adicionar componentes à janela
         listFrame.add(scrollPane, BorderLayout.CENTER);
@@ -55,6 +57,9 @@ public class ToDoListGUI {
         // Ação para remover tarefas
         removeButton.addActionListener(new RemoveButtonListener(toDoList, this));
 
+        // Ação para atualizar tarefas
+        updateButton.addActionListener(new UpdateButtonListener(toDoList, this));
+
         // Ação para fazer tarefas
         doButton.addActionListener(new DoButtonListener(toDoList, this));
 
@@ -63,6 +68,12 @@ public class ToDoListGUI {
 
         //Ação para mudar a dificuldade das tarefas
         changeDifficultyButton.addActionListener(new ChangeDifficultyButtonListener(toDoList, this));
+
+        //Ação para limpar a lista de tarefas
+        cleanListButton.addActionListener(new CleanListButtonListener(toDoList, this));
+
+        //Ação para ordenar a lista de tarefas
+        sortButton.addActionListener(new SortButtonListener(toDoList, this));
     }
 
     public static void showError(Exception exception){
@@ -85,6 +96,10 @@ public class ToDoListGUI {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new ToDoListGUI());
+    }
+
+    public void setToDoList(IList toDoList){
+        this.toDoList = toDoList;
     }
 }
 

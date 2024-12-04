@@ -11,8 +11,6 @@ import exceptions.TaskException;
 
 import java.time.LocalDate;
 
-
-// Está funcionando
 public class AddButtonListener implements ActionListener {
     private IList toDoList;
     private ToDoListGUI toDoListGUI;

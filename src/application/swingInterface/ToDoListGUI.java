@@ -60,6 +60,9 @@ public class ToDoListGUI {
 
         //Ação para mudar o prazo final das tarefas
         changeDeadlineDayButton.addActionListener(new ChangeDeadlineDayButtonListener(toDoList, this));
+
+        //Ação para mudar a dificuldade das tarefas
+        changeDifficultyButton.addActionListener(new ChangeDifficultyButtonListener(toDoList, this));
     }
 
     public static void showError(Exception exception){

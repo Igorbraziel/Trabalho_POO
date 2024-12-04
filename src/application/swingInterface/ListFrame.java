@@ -6,11 +6,11 @@ import java.awt.*;
 public class ListFrame extends JFrame {
     public ListFrame(String title){
         super(title);
-        setSize(1000, 1000);
+        setSize(1400, 1000);
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLayout(new BorderLayout());
     }
 }

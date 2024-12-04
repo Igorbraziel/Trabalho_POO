@@ -2,8 +2,10 @@ package application.swingInterface;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 import entities.*;
+import threads.ReadToDoList;
 
 public class ToDoListGUI {
     private ListFrame listFrame;
@@ -12,17 +14,21 @@ public class ToDoListGUI {
     private JTextField taskField;
     private IList toDoList;
 
-    public ToDoListGUI() {
-        // Inicializar a lista de tarefas personalizada
+    public ToDoListGUI(ReadToDoList readToDoList) {
         toDoList = ToDoList.getInstance();
 
         // Criar a janela principal
         listFrame = new ListFrame("Lista de Tarefas");
+        listFrame.addWindowListener(new ListWindowListener(listFrame, toDoList, new File("listContent.csv")));
 
         // Modelo da lista
         model = new DefaultListModel<>();
         list = new JList<>(model);
+        list.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        list.setCellRenderer(new ListCellRenderer());
+
         JScrollPane scrollPane = new JScrollPane(list);
+
 
         // Painel inferior para funcionalidades tarefas
         JPanel bottomPanel = new JPanel(new GridLayout(4, 2, 15, 15));
@@ -74,6 +80,9 @@ public class ToDoListGUI {
 
         //Ação para ordenar a lista de tarefas
         sortButton.addActionListener(new SortButtonListener(toDoList, this));
+
+        readToDoList.setToDoListGUI(this);
+        readToDoList.start();
     }
 
     public static void showError(Exception exception){
@@ -92,10 +101,6 @@ public class ToDoListGUI {
         for (Task tarefa : toDoList.getTasks()) {
             model.addElement(tarefa.toString());
         }
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new ToDoListGUI());
     }
 
     public void setToDoList(IList toDoList){

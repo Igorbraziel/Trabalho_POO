@@ -10,7 +10,7 @@ public class ListButton extends JButton {
         super(text);
         setBackground(new Color(129, 124, 124));
         setForeground(new Color(0, 0, 0));
-        setFont(new Font("Arial", Font.BOLD, 20));
+        setFont(new Font("Arial", Font.BOLD, 18));
         setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED, new Color(3, 6, 27), new Color(21, 44, 38)));
     }
 }

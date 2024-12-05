@@ -1,9 +1,6 @@
 package application.swingInterface;
 
 import entities.IList;
-import entities.Task;
-import enums.Level;
-import exceptions.TaskException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

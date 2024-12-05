@@ -19,6 +19,7 @@ public class ToDoListGUI {
 
         // Criar a janela principal
         listFrame = new ListFrame("Lista de Tarefas");
+        // Quando a janela principal for fechada os dados serão salvos em um arquivo
         listFrame.addWindowListener(new ListWindowListener(listFrame, toDoList, new File("listContent.csv")));
 
         // Modelo da lista

@@ -30,19 +30,34 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
         );
 
         if(taskIdString == null){
-            throw new TaskException("O número de Id precisa ser informado");
+            try {
+                throw new TaskException("O número de Id precisa ser informado");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         try {
             taskId = Integer.parseInt(taskIdString);
-        } catch(NumberFormatException e){
-            throw new TaskException("O número do Id informado precisa ser inteiro");
+        } catch(NumberFormatException numberFormatException){
+            try {
+                throw new TaskException("O número do Id informado precisa ser inteiro");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
 
         Task taskToChangeDeadlineDay = toDoList.getTask(taskId);
         if(taskToChangeDeadlineDay == null){
-            throw new TaskException("O Id informado não corresponde a nenhuma tarefa");
+            try {
+                throw new TaskException("O Id informado não corresponde a nenhuma tarefa");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
 
@@ -68,13 +83,23 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
             );
 
             if(taskPlusDaysString == null){
-                throw new TaskException("O número de dias precisa ser informado");
+                try {
+                    throw new TaskException("O número de dias precisa ser informado");
+                } catch(TaskException e){
+                    System.out.println(e.getMessage());
+                    return;
+                }
             }
 
             try {
                 plusDays = Integer.parseInt(taskPlusDaysString);
-            } catch(NumberFormatException e){
-                throw new TaskException("O número de dias informado precisa ser inteiro");
+            } catch(NumberFormatException numberFormatException){
+                try {
+                    throw new TaskException("O número de dias informado precisa ser inteiro");
+                } catch(TaskException e){
+                    System.out.println(e.getMessage());
+                    return;
+                }
             }
         } else if (option == 1){
             String taskMinusDaysString = JOptionPane.showInputDialog(
@@ -85,16 +110,31 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
             );
 
             if(taskMinusDaysString == null){
-                throw new TaskException("O número de dias precisa ser informado");
+                try {
+                    throw new TaskException("O número de dias precisa ser informado");
+                } catch(TaskException e){
+                    System.out.println(e.getMessage());
+                    return;
+                }
             }
 
             try {
                 minusDays = Integer.parseInt(taskMinusDaysString);
-            } catch(NumberFormatException e){
-                throw new TaskException("O número de dias informado precisa ser inteiro");
+            } catch(NumberFormatException numberFormatException){
+                try {
+                    throw new TaskException("O número de dias informado precisa ser inteiro");
+                } catch(TaskException e){
+                    System.out.println(e.getMessage());
+                    return;
+                }
             }
         } else {
-            throw new TaskException("A opção precisa ser escolhida para mudar o prazo final");
+            try {
+                throw new TaskException("A opção precisa ser escolhida para mudar o prazo final");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         if(plusDays != null){

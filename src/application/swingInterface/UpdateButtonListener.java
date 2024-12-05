@@ -31,19 +31,34 @@ public class UpdateButtonListener implements ActionListener {
         );
 
         if(taskIdString == null){
-            throw new TaskException("O Número de Id Precisa ser Informado");
+            try {
+                throw new TaskException("O Número de Id Precisa ser Informado");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         try {
             taskId = Integer.parseInt(taskIdString);
-        } catch(NumberFormatException e){
-            throw new TaskException("O Número do Id Informado Precisa ser INTEIRO");
+        } catch(NumberFormatException numberFormatException){
+            try {
+                throw new TaskException("O Número do Id Informado Precisa ser INTEIRO");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         Task updatedTask = toDoList.getTask(taskId);
 
         if(updatedTask == null){
-            throw new TaskException("O Id Informado não Corresponde a Nenhuma Tarefa");
+            try {
+                throw new TaskException("O Id Informado não Corresponde a Nenhuma Tarefa");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         String taskNewName = JOptionPane.showInputDialog(
@@ -54,11 +69,21 @@ public class UpdateButtonListener implements ActionListener {
         );
 
         if(taskNewName == null || taskNewName.isEmpty()){
-            throw new TaskException("O Nome da Tarefa Deve ser Informado");
+            try {
+                throw new TaskException("O Nome da Tarefa Deve ser Informado");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         if(taskNewName.contains(",")){
-            throw new TaskException("Nome Inválido para uma Tarefa");
+            try {
+                throw new TaskException("Nome Inválido para uma Tarefa");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         String[] difficultyLevelOptions = {"FÁCIL", "MÉDIO", "DIFÍCIL"};
@@ -79,7 +104,12 @@ public class UpdateButtonListener implements ActionListener {
         } else if(difficultyLevelChoice == 2) {
             taskNewDifficultyLevel = Level.HARD;
         } else {
-            throw new TaskException("O Nível de Dificuldade da Tarefa Precisa ser Escolhido");
+            try {
+                throw new TaskException("O Nível de Dificuldade da Tarefa Precisa ser Escolhido");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         LocalDate taskNewDeadlineDay;
@@ -95,12 +125,22 @@ public class UpdateButtonListener implements ActionListener {
 
         try {
              days = Integer.parseInt(deadlineDays);
-        } catch (NumberFormatException e){
-            throw new TaskException("O Número de Dias Informado Deve ser um Inteiro");
+        } catch (NumberFormatException numberFormatException){
+            try {
+                throw new TaskException("O Número de Dias Informado Deve ser um Inteiro");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         if(days < 0) {
-            throw new TaskException("O Número de Dias Informado não Pode ser Negativo");
+            try {
+                throw new TaskException("O Número de Dias Informado não Pode ser Negativo");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         taskNewDeadlineDay = LocalDate.now().plusDays(days);

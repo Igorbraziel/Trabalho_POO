@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RemoveButtonListener implements ActionListener {
+public class RemoveButtonListener implements ActionListener{
     private IList toDoList;
     private ToDoListGUI toDoListGUI;
 
@@ -18,7 +18,7 @@ public class RemoveButtonListener implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent){
+    public void actionPerformed(ActionEvent actionEvent) {
         // implementar ação para remover tarefa
         Integer taskId = null;
         String taskIdString = JOptionPane.showInputDialog(
@@ -29,19 +29,34 @@ public class RemoveButtonListener implements ActionListener {
         );
 
         if(taskIdString == null){
-            throw new TaskException("O número de Id precisa ser informado");
+            try {
+                throw new TaskException("O Número de Id Precisa ser Informado");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         try {
             taskId = Integer.parseInt(taskIdString);
-        } catch(NumberFormatException e){
-            throw new TaskException("O número do Id informado precisa ser inteiro");
+        } catch(NumberFormatException numberFormatException){
+            try {
+                throw new TaskException("O Número do Id Informado Precisa ser Inteiro");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
 
         Task removedTask = toDoList.getTask(taskId);
         if(removedTask == null){
-            throw new TaskException("O Id informado não corresponde a nenhuma tarefa");
+            try {
+                throw new TaskException("O Id informado não corresponde a nenhuma tarefa");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         toDoList.removeTask(removedTask);

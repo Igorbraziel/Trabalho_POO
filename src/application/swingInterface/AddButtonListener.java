@@ -24,25 +24,35 @@ public class AddButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent){
         String taskName = JOptionPane.showInputDialog(
                 null,
-                "Digite o nome da tarefa:",
-                "Nome",
+                "Digite o Nome da Tarefa:",
+                "Nome da Tarefa",
                 JOptionPane.QUESTION_MESSAGE
         );
 
         if(taskName == null || taskName.equals("")){
-            throw new TaskException("O nome da tarefa deve ser informado");
+            try {
+                throw new TaskException("O Nome da Tarefa deve ser informado");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         if(taskName.contains(",")){
-            throw new TaskException("Nome inválido para uma tarefa");
+            try {
+                throw new TaskException("Nome inválido para uma Tarefa");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         String[] difficultyLevelOptions = {"FÁCIL", "MÉDIO", "DIFÍCIL"};
 
         int difficultyLevelChoice = JOptionPane.showOptionDialog(
                 null,
-                "Qual o nível de dificuldade da tarefa?",
-                "Dificuldade", 0,
+                "Qual o Nível de Dificuldade da Tarefa?",
+                "Dificuldade da Tarefa", 0,
                 JOptionPane.QUESTION_MESSAGE, null,
                 difficultyLevelOptions, difficultyLevelOptions[0]
         );
@@ -55,14 +65,19 @@ public class AddButtonListener implements ActionListener {
         } else if(difficultyLevelChoice == 2) {
             taskDifficultyLevel = Level.HARD;
         } else {
-            throw new TaskException("O nível de dificuldade da tarefa precisa ser escolhido");
+            try {
+                throw new TaskException("O Nível de Dificuldade da Tarefa precisa ser escolhido");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         LocalDate taskDeadlineDay;
 
         String deadlineDays = JOptionPane.showInputDialog(
                 null,
-                "Digite o número inteiro de dias para fazer a tarefa:",
+                "Digite o Número inteiro de Dias para fazer a Tarefa:",
                 "Dias",
                 JOptionPane.INFORMATION_MESSAGE
         );
@@ -71,12 +86,22 @@ public class AddButtonListener implements ActionListener {
 
         try {
              days = Integer.parseInt(deadlineDays);
-        } catch (NumberFormatException e){
-            throw new TaskException("O Número de dias informado deve ser um inteiro");
+        } catch (NumberFormatException numberFormatException){
+            try {
+                throw new TaskException("O Número de Dias informado deve ser um INTEIRO");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         if(days < 0) {
-            throw new TaskException("O Número de dias informado não pode ser negativo");
+            try {
+                throw new TaskException("O Número de Dias informado não pode ser NEGATIVO");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         taskDeadlineDay = LocalDate.now().plusDays(days);
@@ -85,7 +110,7 @@ public class AddButtonListener implements ActionListener {
 
         JOptionPane.showMessageDialog(
                 null,
-                "Tarefa adicionada com sucesso",
+                "Tarefa Adicionada com Sucesso",
                 "Sucesso",
                 JOptionPane.INFORMATION_MESSAGE
         );

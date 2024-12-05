@@ -30,19 +30,34 @@ public class ChangeDifficultyButtonListener implements ActionListener {
         );
 
         if(taskIdString == null){
-            throw new TaskException("O número de Id precisa ser informado");
+            try {
+                throw new TaskException("O número de Id precisa ser informado");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         try {
             taskId = Integer.parseInt(taskIdString);
-        } catch(NumberFormatException e){
-            throw new TaskException("O número do Id informado precisa ser inteiro");
+        } catch(NumberFormatException numberFormatException){
+            try {
+                throw new TaskException("O número do Id informado precisa ser inteiro");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
 
         Task taskToChangeDifficulty = toDoList.getTask(taskId);
         if(taskToChangeDifficulty == null){
-            throw new TaskException("O Id informado não corresponde a nenhuma tarefa");
+            try {
+                throw new TaskException("O Id informado não corresponde a nenhuma tarefa");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
 
@@ -65,7 +80,12 @@ public class ChangeDifficultyButtonListener implements ActionListener {
         } else if (option == 2){
             taskLevel = Level.HARD;
         } else {
-            throw new TaskException("A opção precisa ser escolhida para mudar a dificuldade");
+            try {
+                throw new TaskException("A opção precisa ser escolhida para mudar a dificuldade");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         toDoList.changeDifficultyLevel(taskToChangeDifficulty, taskLevel);

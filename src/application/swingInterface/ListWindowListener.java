@@ -30,7 +30,7 @@ public class ListWindowListener extends WindowAdapter {
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append(task.getId() + ",");
                 stringBuilder.append(task.getName() + ",");
-                stringBuilder.append(task.getDifficultyLevel().toString() + ","); // testar essa linha
+                stringBuilder.append(task.getDifficultyLevel().toString() + ",");
                 stringBuilder.append(task.getDeadlineDay().format(Task.dateTimeFormatter) + ",");
                 stringBuilder.append(task.getProgressingStatus().toString() + ",");
                 stringBuilder.append(task.getPercentageDone());

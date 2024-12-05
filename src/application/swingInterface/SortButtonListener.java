@@ -28,7 +28,12 @@ public class SortButtonListener implements ActionListener {
         );
 
         if(chosenOption == null){
-            throw new TaskException("A forma de ordenação deve ser escolhida");
+            try {
+                throw new TaskException("A forma de ordenação deve ser escolhida");
+            } catch(TaskException e){
+                System.out.println(e.getMessage());
+                return;
+            }
         }
 
         if(chosenOption.toString().equals("Id")){

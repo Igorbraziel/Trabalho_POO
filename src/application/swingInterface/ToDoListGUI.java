@@ -86,7 +86,7 @@ public class ToDoListGUI {
     }
 
     public static void showError(Exception exception){
-        String exceptionMessage = "Erro:" + exception.getMessage();
+        String exceptionMessage = "Erro: " + exception.getMessage();
         JOptionPane.showMessageDialog(
                 null,
                 exceptionMessage,

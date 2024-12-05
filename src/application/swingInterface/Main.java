@@ -22,20 +22,12 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
-        IList toDoList = ToDoList.getInstance(); // inicializando a minha lista de acordo com os dados já salvos
+        IList toDoList = ToDoList.getInstance();
         File outputFile = new File("listContent.csv");
 
-        ReadToDoList readToDoList = new ReadToDoList(toDoList, outputFile);
+        ReadToDoList readToDoList = new ReadToDoList(toDoList, outputFile); // inicializando a minha lista de acordo com os dados já salvos
 
-        try {
-            SwingUtilities.invokeLater(() -> new ToDoListGUI(readToDoList));
-        } catch (DateException dateException) {
-            ToDoListGUI.showError(dateException);
-        } catch (IdException idException) {
-            ToDoListGUI.showError(idException);
-        } catch (TaskException taskException) {
-            ToDoListGUI.showError(taskException);
-        }
+        SwingUtilities.invokeLater(() -> new ToDoListGUI(readToDoList));
     }
 }
 

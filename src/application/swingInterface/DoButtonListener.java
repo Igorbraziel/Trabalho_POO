@@ -23,14 +23,14 @@ public class DoButtonListener implements ActionListener {
         Integer taskId = null;
         String taskIdString = JOptionPane.showInputDialog(
                 null,
-                "Digite o número do Id da tarefa a ser feita:",
-                "Fazer tarefa",
+                "Digite o Número do Id da Tarefa a ser feita:",
+                "Fazer Tarefa",
                 JOptionPane.QUESTION_MESSAGE
         );
 
         if(taskIdString == null){
             try {
-                throw new TaskException("O número de Id precisa ser informado");
+                throw new TaskException("O Número de Id precisa ser informado");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -41,7 +41,7 @@ public class DoButtonListener implements ActionListener {
             taskId = Integer.parseInt(taskIdString);
         } catch(NumberFormatException numberFormatException){
             try {
-                throw new TaskException("O número do Id informado precisa ser inteiro");
+                throw new TaskException("O Número do Id informado precisa ser INTEIRO");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -52,7 +52,7 @@ public class DoButtonListener implements ActionListener {
         Task taskToDo = toDoList.getTask(taskId);
         if(taskToDo == null){
             try {
-                throw new TaskException("O Id informado não corresponde a nenhuma tarefa");
+                throw new TaskException("O Id informado não corresponde a nenhuma Tarefa");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -63,14 +63,14 @@ public class DoButtonListener implements ActionListener {
         Integer taskPercentageDone = null;
         String taskPercentageDoneString = JOptionPane.showInputDialog(
                 null,
-                "Digite o número em porcentagem que você deseja fazer de sua tarefa:",
-                "Número em porcentagem",
+                "Digite o Número em Porcentagem que você Deseja Fazer de sua Tarefa:",
+                "Número em Porcentagem",
                 JOptionPane.QUESTION_MESSAGE
         );
 
         if(taskPercentageDoneString == null){
             try {
-                throw new TaskException("O número da porcentagem precisa ser informado");
+                throw new TaskException("O Número da Porcentagem precisa ser informado");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -81,7 +81,7 @@ public class DoButtonListener implements ActionListener {
             taskPercentageDone = Integer.parseInt(taskPercentageDoneString);
         } catch(NumberFormatException numberFormatException){
             try {
-                throw new TaskException("O número da porcentagem precisa ser inteiro");
+                throw new TaskException("O Número da Porcentagem precisa ser INTEIRO");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -90,7 +90,7 @@ public class DoButtonListener implements ActionListener {
 
         if(taskPercentageDone < 0) {
             try {
-                throw new TaskException("Atualização de Tarefa inválida, a porcentagem feita deve ser positiva");
+                throw new TaskException("Atualização de Tarefa inválida, a Porcentagem feita deve ser POSITIVA");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -101,7 +101,7 @@ public class DoButtonListener implements ActionListener {
 
         JOptionPane.showMessageDialog(
                 null,
-                "Porcentagem da tarefa atualizado com sucesso",
+                "Porcentagem da Tarefa Atualizada com Sucesso",
                 "Sucesso",
                 JOptionPane.INFORMATION_MESSAGE
         );

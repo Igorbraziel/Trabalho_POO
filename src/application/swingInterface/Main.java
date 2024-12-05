@@ -25,7 +25,7 @@ public class Main {
         IList toDoList = ToDoList.getInstance();
         File outputFile = new File("listContent.csv");
 
-        ReadToDoList readToDoList = new ReadToDoList(toDoList, outputFile); // inicializando a minha lista de acordo com os dados já salvos
+        ReadToDoList readToDoList = new ReadToDoList(toDoList, outputFile);
 
         SwingUtilities.invokeLater(() -> new ToDoListGUI(readToDoList));
     }

@@ -63,8 +63,8 @@ public class UpdateButtonListener implements ActionListener {
 
         String taskNewName = JOptionPane.showInputDialog(
                 null,
-                "Digite o Novo Nome da tarefa:",
-                "Nome",
+                "Digite o Novo Nome da Tarefa:",
+                "Novo Nome",
                 JOptionPane.QUESTION_MESSAGE
         );
 
@@ -79,7 +79,7 @@ public class UpdateButtonListener implements ActionListener {
 
         if(taskNewName.contains(",")){
             try {
-                throw new TaskException("Nome Inválido para uma Tarefa");
+                throw new TaskException("Nome inválido para uma Tarefa");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -90,8 +90,8 @@ public class UpdateButtonListener implements ActionListener {
 
         int difficultyLevelChoice = JOptionPane.showOptionDialog(
                 null,
-                "Qual o Nível de Dificuldade da Tarefa?",
-                "Dificuldade", 0,
+                "Qual o Novo Nível de Dificuldade da Tarefa?",
+                "Nova Dificuldade", 0,
                 JOptionPane.QUESTION_MESSAGE, null,
                 difficultyLevelOptions, difficultyLevelOptions[0]
         );
@@ -127,7 +127,7 @@ public class UpdateButtonListener implements ActionListener {
              days = Integer.parseInt(deadlineDays);
         } catch (NumberFormatException numberFormatException){
             try {
-                throw new TaskException("O Número de Dias Informado Deve ser um Inteiro");
+                throw new TaskException("O Número de Dias Informado Deve ser um INTEIRO");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -136,7 +136,7 @@ public class UpdateButtonListener implements ActionListener {
 
         if(days < 0) {
             try {
-                throw new TaskException("O Número de Dias Informado não Pode ser Negativo");
+                throw new TaskException("O Número de Dias Informado não Pode ser NEGATIVO");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;

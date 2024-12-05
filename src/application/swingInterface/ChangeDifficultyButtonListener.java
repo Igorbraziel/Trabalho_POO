@@ -24,14 +24,14 @@ public class ChangeDifficultyButtonListener implements ActionListener {
         Integer taskId = null;
         String taskIdString = JOptionPane.showInputDialog(
                 null,
-                "Digite o número do Id da tarefa a ser trocada a dificuldade:",
+                "Digite o Número do Id da Tarefa a ser trocada a Dificuldade:",
                 "Mudar Dificuldade",
                 JOptionPane.QUESTION_MESSAGE
         );
 
         if(taskIdString == null){
             try {
-                throw new TaskException("O número de Id precisa ser informado");
+                throw new TaskException("O Número de Id precisa ser informado");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -42,7 +42,7 @@ public class ChangeDifficultyButtonListener implements ActionListener {
             taskId = Integer.parseInt(taskIdString);
         } catch(NumberFormatException numberFormatException){
             try {
-                throw new TaskException("O número do Id informado precisa ser inteiro");
+                throw new TaskException("O Número do Id informado precisa ser INTEIRO");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -53,7 +53,7 @@ public class ChangeDifficultyButtonListener implements ActionListener {
         Task taskToChangeDifficulty = toDoList.getTask(taskId);
         if(taskToChangeDifficulty == null){
             try {
-                throw new TaskException("O Id informado não corresponde a nenhuma tarefa");
+                throw new TaskException("O Id informado não corresponde a nenhuma Tarefa");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -65,8 +65,8 @@ public class ChangeDifficultyButtonListener implements ActionListener {
 
         int option = JOptionPane.showOptionDialog(
                 null,
-                "Qual a nova dificuldade?",
-                "Dificuldade", 0,
+                "Qual a Nova Dificuldade?",
+                "Nova Dificuldade", 0,
                 JOptionPane.QUESTION_MESSAGE, null,
                 choices, choices[0]
         );
@@ -81,7 +81,7 @@ public class ChangeDifficultyButtonListener implements ActionListener {
             taskLevel = Level.HARD;
         } else {
             try {
-                throw new TaskException("A opção precisa ser escolhida para mudar a dificuldade");
+                throw new TaskException("A Opção precisa ser escolhida para mudar a Dificuldade");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -92,7 +92,7 @@ public class ChangeDifficultyButtonListener implements ActionListener {
 
         JOptionPane.showMessageDialog(
                 null,
-                "Dificuldade alterada com sucesso",
+                "Dificuldade Alterada com Sucesso",
                 "Sucesso",
                 JOptionPane.INFORMATION_MESSAGE
         );

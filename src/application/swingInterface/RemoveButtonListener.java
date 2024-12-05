@@ -23,8 +23,8 @@ public class RemoveButtonListener implements ActionListener{
         Integer taskId = null;
         String taskIdString = JOptionPane.showInputDialog(
                 null,
-                "Digite o número do Id da tarefa a ser removida:",
-                "Remover tarefa por Id",
+                "Digite o Número do Id da Tarefa a ser Removida:",
+                "Remover Tarefa por Id",
                 JOptionPane.QUESTION_MESSAGE
         );
 
@@ -41,7 +41,7 @@ public class RemoveButtonListener implements ActionListener{
             taskId = Integer.parseInt(taskIdString);
         } catch(NumberFormatException numberFormatException){
             try {
-                throw new TaskException("O Número do Id Informado Precisa ser Inteiro");
+                throw new TaskException("O Número do Id Informado Precisa ser INTEIRO");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -52,7 +52,7 @@ public class RemoveButtonListener implements ActionListener{
         Task removedTask = toDoList.getTask(taskId);
         if(removedTask == null){
             try {
-                throw new TaskException("O Id informado não corresponde a nenhuma tarefa");
+                throw new TaskException("O Id informado não corresponde a nenhuma Tarefa");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -63,7 +63,7 @@ public class RemoveButtonListener implements ActionListener{
 
         JOptionPane.showMessageDialog(
                 null,
-                "Tarefa Removida com sucesso",
+                "Tarefa Removida com Sucesso",
                 "Sucesso",
                 JOptionPane.INFORMATION_MESSAGE
         );

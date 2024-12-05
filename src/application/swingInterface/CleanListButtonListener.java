@@ -24,7 +24,7 @@ public class CleanListButtonListener implements ActionListener {
 
         JOptionPane.showMessageDialog(
                 null,
-                "Tarefas concluidas ou que já passaram do prazo foram removidas",
+                "Tarefas Concluidas ou que já passaram do prazo foram Removidas",
                 "Sucesso",
                 JOptionPane.INFORMATION_MESSAGE
         );

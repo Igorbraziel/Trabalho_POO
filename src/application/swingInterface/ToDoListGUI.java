@@ -29,7 +29,6 @@ public class ToDoListGUI {
 
         JScrollPane scrollPane = new JScrollPane(list);
 
-
         // Painel inferior para funcionalidades tarefas
         JPanel bottomPanel = new JPanel(new GridLayout(4, 2, 15, 15));
 
@@ -69,20 +68,20 @@ public class ToDoListGUI {
         // Ação para fazer tarefas
         doButton.addActionListener(new DoButtonListener(toDoList, this));
 
-        //Ação para mudar o prazo final das tarefas
+        // Ação para mudar o prazo final das tarefas
         changeDeadlineDayButton.addActionListener(new ChangeDeadlineDayButtonListener(toDoList, this));
 
-        //Ação para mudar a dificuldade das tarefas
+        // Ação para mudar a dificuldade das tarefas
         changeDifficultyButton.addActionListener(new ChangeDifficultyButtonListener(toDoList, this));
 
-        //Ação para limpar a lista de tarefas
+        // Ação para limpar a lista de tarefas
         cleanListButton.addActionListener(new CleanListButtonListener(toDoList, this));
 
-        //Ação para ordenar a lista de tarefas
+        // Ação para ordenar a lista de tarefas
         sortButton.addActionListener(new SortButtonListener(toDoList, this));
 
-        readToDoList.setToDoListGUI(this);
-        readToDoList.start();
+        readToDoList.setToDoListGUI(this); // Inicializando a interface com os valores já existentes na lista
+        readToDoList.start(); // Iniciando a Thread
     }
 
     public static void showError(Exception exception){
@@ -95,7 +94,6 @@ public class ToDoListGUI {
         );
     }
 
-    // Atualizar o modelo da lista com os dados do ToDoList
     public void showList() {
         model.clear();
         for (Task tarefa : toDoList.getTasks()) {

@@ -24,14 +24,14 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
         Integer taskId = null;
         String taskIdString = JOptionPane.showInputDialog(
                 null,
-                "Digite o número do Id da tarefa a ser trocado o prazo final:",
+                "Digite o Número do Id da Tarefa a ser trocado o prazo final:",
                 "Mudar Prazo Final",
                 JOptionPane.QUESTION_MESSAGE
         );
 
         if(taskIdString == null){
             try {
-                throw new TaskException("O número de Id precisa ser informado");
+                throw new TaskException("O Número de Id precisa ser informado");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -42,7 +42,7 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
             taskId = Integer.parseInt(taskIdString);
         } catch(NumberFormatException numberFormatException){
             try {
-                throw new TaskException("O número do Id informado precisa ser inteiro");
+                throw new TaskException("O Número do Id informado precisa ser INTEIRO");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -53,7 +53,7 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
         Task taskToChangeDeadlineDay = toDoList.getTask(taskId);
         if(taskToChangeDeadlineDay == null){
             try {
-                throw new TaskException("O Id informado não corresponde a nenhuma tarefa");
+                throw new TaskException("O Id informado não corresponde a nenhuma Tarefa");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -61,11 +61,11 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
         }
 
 
-        String[] choices = {"Adicionar", "Remover"};
+        String[] choices = {"ADICIONAR", "REMOVER"};
 
         int option = JOptionPane.showOptionDialog(
                 null,
-                "Deseja adicionar ou remover dias ao prazo final?",
+                "Deseja Adicionar ou Remover Dias ao prazo final?",
                 "Opções", 0,
                 JOptionPane.QUESTION_MESSAGE, null,
                 choices, choices[0]
@@ -77,14 +77,14 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
         if(option == 0){
             String taskPlusDaysString = JOptionPane.showInputDialog(
                     null,
-                    "Digite o número de dias para adicionar ao prazo final",
+                    "Digite o Número de Dias para Adicionar ao prazo final",
                     "Adicionar dias",
                     JOptionPane.QUESTION_MESSAGE
             );
 
             if(taskPlusDaysString == null){
                 try {
-                    throw new TaskException("O número de dias precisa ser informado");
+                    throw new TaskException("O Número de Dias precisa ser informado");
                 } catch(TaskException e){
                     System.out.println(e.getMessage());
                     return;
@@ -95,7 +95,7 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
                 plusDays = Integer.parseInt(taskPlusDaysString);
             } catch(NumberFormatException numberFormatException){
                 try {
-                    throw new TaskException("O número de dias informado precisa ser inteiro");
+                    throw new TaskException("O Número de Dias informado precisa ser INTEIRO");
                 } catch(TaskException e){
                     System.out.println(e.getMessage());
                     return;
@@ -104,14 +104,14 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
         } else if (option == 1){
             String taskMinusDaysString = JOptionPane.showInputDialog(
                     null,
-                    "Digite o número de dias para remover do prazo final",
+                    "Digite o Número de Dias para Remover do prazo final",
                     "Remover dias",
                     JOptionPane.QUESTION_MESSAGE
             );
 
             if(taskMinusDaysString == null){
                 try {
-                    throw new TaskException("O número de dias precisa ser informado");
+                    throw new TaskException("O Número de Dias precisa ser informado");
                 } catch(TaskException e){
                     System.out.println(e.getMessage());
                     return;
@@ -122,7 +122,7 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
                 minusDays = Integer.parseInt(taskMinusDaysString);
             } catch(NumberFormatException numberFormatException){
                 try {
-                    throw new TaskException("O número de dias informado precisa ser inteiro");
+                    throw new TaskException("O Número de Dias informado precisa ser INTEIRO");
                 } catch(TaskException e){
                     System.out.println(e.getMessage());
                     return;
@@ -130,7 +130,7 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
             }
         } else {
             try {
-                throw new TaskException("A opção precisa ser escolhida para mudar o prazo final");
+                throw new TaskException("A Opção precisa ser escolhida para Mudar o prazo final");
             } catch(TaskException e){
                 System.out.println(e.getMessage());
                 return;
@@ -147,7 +147,7 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
 
         JOptionPane.showMessageDialog(
                 null,
-                "prazo final alterado com sucesso",
+                "Prazo Final Alterado com Sucesso",
                 "Sucesso",
                 JOptionPane.INFORMATION_MESSAGE
         );

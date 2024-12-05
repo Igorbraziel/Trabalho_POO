@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
 
-public class ToDoList implements IList, ListObservable {
+public final class ToDoList implements IList, ListObservable {
     private static ToDoList instance;
     private List<Task> tasks;
 

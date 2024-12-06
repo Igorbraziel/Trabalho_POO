@@ -152,15 +152,33 @@ public class Task implements ListObserver {
         idNumber = id;
     }
 
+    public String showDifficultyLevel(){
+        if(difficultyLevel.equals(Level.EASY)){
+            return "FÁCIL";
+        } else if(difficultyLevel.equals(Level.MEDIUM)){
+            return "MÉDIO";
+        }
+        return "DIFÍCIL";
+    }
+
+    public String showProgressingStatus(){
+        if(progressingStatus.equals(Status.PENDING)){
+            return "PENDENTE";
+        } else if(progressingStatus.equals(Status.PROGRESSING)){
+            return "PROGREDINDO";
+        }
+        return "FINALIZADO";
+    }
+
     @Override
     public String toString() {
         return "Tarefa - {" +
-                "id=" + id +
-                ", nome=" + name +
-                ", dificuldade=" + difficultyLevel +
-                ", prazo final=" + this.showFormattedDate() +
-                ", status=" + progressingStatus +
-                ", porcentagem feita=" + percentageDone + "%" +
+                "Id = " + id +
+                ", Nome = " + name +
+                ", Dificuldade = " + showDifficultyLevel() +
+                ", Prazo Final = " + this.showFormattedDate() +
+                ", Status = " + showProgressingStatus() +
+                ", Porcentagem Feita = " + percentageDone + "%" +
                 '}';
     }
 }

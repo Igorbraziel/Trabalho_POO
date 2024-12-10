@@ -68,22 +68,6 @@ public final class ToDoList implements IList, ListObservable {
     public int size(){
         return tasks.size();
     }
-    //--------------------------------
-
-
-    // GoF Observer methods;
-    @Override
-    public void notifyTask(Task task, Object obj){
-        task.update(obj);
-    }
-
-    @Override
-    public void notifyTasks(Object obj){
-        for(Task t : new ArrayList<Task>(tasks)){
-            t.update(obj);
-        }
-    }
-    //--------------------------------
 
     @Override
     public void finishTask(Task task){
@@ -109,4 +93,20 @@ public final class ToDoList implements IList, ListObservable {
     public void changeDifficultyLevel(Task task, Level difficultyLevel){
         notifyTask(task, difficultyLevel);
     }
+    //--------------------------------
+
+
+    // GoF Observer methods;
+    @Override
+    public void notifyTask(Task task, Object obj){
+        task.update(obj);
+    }
+
+    @Override
+    public void notifyTasks(Object obj){
+        for(Task t : new ArrayList<Task>(tasks)){
+            t.update(obj);
+        }
+    }
+    //--------------------------------
 }

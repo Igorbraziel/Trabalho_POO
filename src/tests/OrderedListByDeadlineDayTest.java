@@ -3,17 +3,17 @@ package tests;
 import entities.IList;
 import entities.OrderedListByDeadlineDay;
 import entities.Task;
+import entities.ToDoList;
 
 import java.time.LocalDate;
+
 import java.util.List;
 
-import entities.ToDoList;
 import enums.Level;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
-// WORKING
 public class OrderedListByDeadlineDayTest {
     @Test
     public void getTasks(){

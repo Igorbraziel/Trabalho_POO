@@ -137,10 +137,26 @@ public class ChangeDeadlineDayButtonListener implements ActionListener {
         }
 
         if(plusDays != null){
+            if(plusDays < 0) {
+                try {
+                    throw new TaskException("O Número de Dias informado não pode ser NEGATIVO");
+                } catch(TaskException e){
+                    System.out.println(e.getMessage());
+                    return;
+                }
+            }
             toDoList.changeDeadlineDay(taskToChangeDeadlineDay, taskToChangeDeadlineDay.getDeadlineDay().plusDays(plusDays));
         }
 
         if(minusDays != null){
+            if(minusDays < 0) {
+                try {
+                    throw new TaskException("O Número de Dias informado não pode ser NEGATIVO");
+                } catch(TaskException e){
+                    System.out.println(e.getMessage());
+                    return;
+                }
+            }
             toDoList.changeDeadlineDay(taskToChangeDeadlineDay, taskToChangeDeadlineDay.getDeadlineDay().minusDays(minusDays));
         }
 

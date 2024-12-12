@@ -19,7 +19,6 @@ public class RemoveButtonListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        // implementar ação para remover tarefa
         Integer taskId = null;
         String taskIdString = JOptionPane.showInputDialog(
                 null,

@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-// WORKING
 public class TaskTest {
 
     @Test

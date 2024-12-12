@@ -123,6 +123,7 @@ public class Task implements ListObserver {
         return deadlineDay.format(dateTimeFormatter);
     }
 
+    // GoF pattern: Observer
     @Override
     public void update(Object obj) {
         if(obj == ToDoList.getInstance()){
@@ -143,6 +144,7 @@ public class Task implements ListObserver {
             setDifficultyLevel(difficultyLevel);
         }
     }
+    // GoF pattern
 
     public static Integer getIdNumber() {
         return idNumber;

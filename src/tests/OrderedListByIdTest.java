@@ -10,9 +10,7 @@ import java.util.List;
 import entities.ToDoList;
 import enums.Level;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-// WORKING
 public class OrderedListByIdTest {
     @Test
     public void getTasks(){

@@ -12,7 +12,6 @@ import enums.Level;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-// WORKING
 public class OrderedListByPercentageDoneTest {
     @Test
     public void getTasks(){

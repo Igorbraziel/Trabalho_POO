@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [
+        "src"
+    ],
+    "java.project.referencedLibraries": [
+        "/home/igor/Downloads/hamcrest-core-1.3-javadoc.jar",
+        "/home/igor/Downloads/junit-4.13.2-javadoc.jar",
+        "test-lib/**/*.jar"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
+}

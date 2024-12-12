@@ -12,8 +12,6 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-
-// WORKING
 public class ToDoListTest {
     // GoF Decorator methods:
     @Test

@@ -11,13 +11,12 @@ public class ToDoListGUI {
     private ListFrame listFrame;
     private DefaultListModel<String> model;
     private JList<String> list;
-    private JTextField taskField;
     private IList toDoList;
 
     public ToDoListGUI(ReadToDoList readToDoList) {
         toDoList = ToDoList.getInstance();
 
-        // Criar a janela principal
+        // Criando a janela principal
         listFrame = new ListFrame("Lista de Tarefas");
         // Quando a janela principal for fechada os dados serão salvos em um arquivo
         listFrame.addWindowListener(new ListWindowListener(listFrame, toDoList, new File("listContent.csv")));
@@ -90,7 +89,7 @@ public class ToDoListGUI {
         JOptionPane.showMessageDialog(
                 null,
                 exceptionMessage,
-                "Error",
+                "Erro",
                 JOptionPane.ERROR_MESSAGE
         );
     }

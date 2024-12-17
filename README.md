@@ -22,3 +22,14 @@ Padrões de projeto utilizados:
 
 Ideia do projeto:
 - Criar uma Lista de tarefas a fazer (to do list).
+
+Como Executar o programa:
+-Executar o arquivo Main, que se encontra dentro do package application.swingInterface
+nesse arquivo o programa será executado com a interface gŕafica
+
+Como Executar os testes:
+-Os testes para serem executados requerem a instalação do framework Junit,
+após instalado, basta ir no package tests, e executar cada uma das classes de teste
+
+Integrantes do grupo:
+Igor Reis Braziel, Guilherme Ramos Santos, Pablo Agnaldo Marques Oliveira
